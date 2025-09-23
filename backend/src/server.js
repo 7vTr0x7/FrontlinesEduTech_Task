@@ -16,13 +16,7 @@ const APP_URL = process.env.APP_URL;
 const allowedOrigins = [LOCAL_URL, APP_URL];
 
 const corsOptions = {
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
+  origin: "*",
   credentials: true,
 };
 
