@@ -1,11 +1,12 @@
-import React from 'react'
+import React from "react";
+import CompanyList from "./components/CompanyList";
 
 const App = () => {
   return (
     <div>
-      <p className='text-2xl text-red-500'>Home</p>
+      <CompanyList />
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
