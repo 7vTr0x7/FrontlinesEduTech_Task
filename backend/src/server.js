@@ -10,10 +10,10 @@ const app = express();
 app.use(express.json());
 
 const PORT = process.env.PORT;
-const API_URL = process.env.API_URL;
+const LOCAL_URL = process.env.LOCAL_URL;
 
 const corsOptions = {
-  origin: [`http://localhost:${PORT}`, API_URL],
+  origin: [LOCAL_URL],
   credentials: true,
 };
 
