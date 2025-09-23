@@ -50,13 +50,7 @@ export default function CompaniesPage() {
       const query = buildQuery(currentFilters);
       const url = `${import.meta.env.VITE_API_URL}/api/companies?${query}`;
 
-      const res = await fetch(url, {
-        method: "GET",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const res = await fetch(url);
 
       if (!res.ok) {
         const text = await res.text();
