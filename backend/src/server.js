@@ -12,8 +12,16 @@ app.use(express.json());
 const PORT = process.env.PORT;
 const LOCAL_URL = process.env.LOCAL_URL;
 
+const allowedOrigins = [LOCAL_URL];
+
 const corsOptions = {
-  origin: [LOCAL_URL],
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   credentials: true,
 };
 

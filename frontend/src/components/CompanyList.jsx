@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 
 const CompanyList = () => {
   const [companies, setCompanies] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const fetchCompanies = async () => {
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL}`, {
+      setIsLoading(true);
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/companies`, {
         credentials: "include",
       });
       if (!res.ok) {
@@ -15,9 +17,11 @@ const CompanyList = () => {
       const data = await res.json();
       if (data?.data) {
         setCompanies(data.data);
+        setIsLoading(false);
       }
     } catch (error) {
       console.log("Failed to fetch companies");
+      setIsLoading(false);
       throw new Error(error.message);
     }
   };
@@ -26,22 +30,19 @@ const CompanyList = () => {
     fetchCompanies();
   }, []);
 
-  console.log(companies);
-
   return (
     <div>
-      {companies.length > 0 ? (
+      <p>List</p>
+      {companies?.length > 0 ? (
         <div>
-          {companies.map((company) => {
+          {companies.map((company) => (
             <div key={company._id}>
-              <p>{company.name}</p>
-            </div>;
-          })}
+              <p className="text-xl text-black">{company.name}</p>
+            </div>
+          ))}
         </div>
       ) : (
-        <div>
-          <p>No data found</p>
-        </div>
+        <div>{isLoading ? <p>Loading</p> : <p>No data found</p>}</div>
       )}
     </div>
   );
