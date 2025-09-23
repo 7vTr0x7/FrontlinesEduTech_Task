@@ -11,15 +11,23 @@ export const getCompanies = async (req, res) => {
       foundedAfter,
       foundedBefore,
       page = 1,
-      limit = 10,
+      limit = 5,
       sort,
     } = req.query;
 
     const filter = {};
 
-    if (search) filter.$text = { $search: search };
+    if (search) {
+      filter.$or = [
+        { name: { $regex: search, $options: "i" } },
+        { industry: { $regex: search, $options: "i" } },
+        { "location.city": { $regex: search, $options: "i" } },
+      ];
+    }
+
     if (industry) filter.industry = industry;
     if (city) filter["location.city"] = city;
+
     if (minEmployees || maxEmployees) {
       filter.employees = {};
       if (minEmployees) filter.employees.$gte = Number(minEmployees);

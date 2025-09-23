@@ -1,10 +1,9 @@
-import React from "react";
-import CompanyList from "./components/CompanyList";
+import CompaniesPage from "./pages/CompaniesPage";
 
 const App = () => {
   return (
     <div>
-      <CompanyList />
+      <CompaniesPage />
     </div>
   );
 };
