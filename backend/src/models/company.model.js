@@ -17,4 +17,4 @@ const CompanySchema = new mongoose.Schema(
 );
 CompanySchema.index({ name: "text", description: "text", industry: "text" });
 
-export const company = mongoose.model("Company", CompanySchema);
+export const Company = mongoose.model("Company", CompanySchema);
