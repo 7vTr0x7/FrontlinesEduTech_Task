@@ -106,7 +106,7 @@ export default function CompaniesPage() {
 
       <FilterControls onChange={handleFilterChange} initial={filters} />
 
-      {error && <div className="text-sm text-red-600">{error}</div>}
+      {/* {error && <div className="text-sm text-red-600">{error}</div>} */}
 
       <div>
         <Suspense

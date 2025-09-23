@@ -11,8 +11,9 @@ app.use(express.json());
 
 const PORT = process.env.PORT;
 const LOCAL_URL = process.env.LOCAL_URL;
+const APP_URL = process.env.APP_URL;
 
-const allowedOrigins = [LOCAL_URL];
+const allowedOrigins = [LOCAL_URL, APP_URL];
 
 const corsOptions = {
   origin: function (origin, callback) {
