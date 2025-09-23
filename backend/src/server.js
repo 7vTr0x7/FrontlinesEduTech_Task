@@ -9,8 +9,10 @@ const app = express();
 
 app.use(express.json());
 
+const PORT = process.env.PORT;
+
 const corsOptions = {
-  origin: "*",
+  origin: [`http://localhost:${PORT}`],
   credentials: true,
 };
 
@@ -20,7 +22,6 @@ app.use("/api", companyRouter);
 
 initializeDB();
 
-const PORT = process.env.PORT;
 app.listen(PORT, () => {
   console.log(`Server running on ${PORT}`);
 });
