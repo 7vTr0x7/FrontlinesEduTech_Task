@@ -21,7 +21,6 @@ export const getCompanies = async (req, res) => {
       filter.$or = [
         { name: { $regex: search, $options: "i" } },
         { industry: { $regex: search, $options: "i" } },
-        { description: { $regex: search, $options: "i" } },
         { "location.city": { $regex: search, $options: "i" } },
       ];
     }
