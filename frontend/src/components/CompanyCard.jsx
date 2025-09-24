@@ -13,9 +13,11 @@ export default function CompanyCard({ companies }) {
             <p className="text-sm text-muted-foreground">
               {c.industry || "Industry not specified"}
             </p>
-            <p className="text-sm">{c.location?.city ?? "-"}</p>
-            <p className="text-sm">{c.employees ?? "-"}</p>
-            <p className="text-sm">{c.foundedYear ?? "-"}</p>
+            <div className="flex justify-between">
+              <p className="text-sm">{c.location?.city ?? "-"}</p>
+              <p className="text-sm">{c.foundedYear ?? "-"}</p>
+            </div>
+            <p className="text-sm">{c.description ?? "-"}</p>
           </CardContent>
         </Card>
       ))}
