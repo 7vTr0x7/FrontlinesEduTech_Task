@@ -52,7 +52,6 @@ export default function CompaniesPage() {
 
       const res = await fetch(url, {
         method: "GET",
-        credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },
